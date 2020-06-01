@@ -1,12 +1,8 @@
-from starlette.applications import Starlette
-from starlette.responses import HTMLResponse
-from starlette.routing import Route
+import fastapi
+from starlette.templating import Jinja2Templates
+import os
 
 
-async def homepage(request):
-    return HTMLResponse(f"<h1>Hello World</h1>", status_code=200)
+templates = Jinja2Templates("templates")
 
-
-routes = [Route("/", endpoint=homepage)]
-
-app = Starlette(debug=True, routes=routes)
+app = fastapi.FastAPI()
